@@ -15,8 +15,9 @@ module.exports = function (environment) {
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
+      apollo: {
+        apiURL: 'https://api.geographql.rudio.dev/graphql',
+      },
     },
   };
 
@@ -38,6 +39,10 @@ module.exports = function (environment) {
 
     ENV.APP.rootElement = '#ember-testing';
     ENV.APP.autoboot = false;
+    ENV.apollo = {
+      apiURL: 'https://api.geographql.rudio.dev/graphql',
+      connectToDevTools: true
+    };
   }
 
   if (environment === 'production') {

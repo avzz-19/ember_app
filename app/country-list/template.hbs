@@ -1,0 +1,29 @@
+<h1>Country List</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Currency</th>
+      <th>Capital</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each @model.countries as |country|}}
+      <tr>
+        <td>{{country.name}}</td>
+        <td>{{country.currency}}</td>
+        <td>{{country.capital}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="pagination">
+  {{#if @model.currentPage}}
+    <button type="button" {{action "goToPage" (@model.currentPage)}}>Previous</button>
+  {{/if}}
+  <span>Page {{@model.currentPage}} of {{@model.totalPages}}</span>
+  {{#if (@model.currentPage @model.totalPages)}}
+    <button type="button" {{action "goToPage" (@model.currentPage)}}>Next</button>
+  {{/if}}
+</div>
