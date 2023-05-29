@@ -6,6 +6,7 @@ export const countriesQuery = gql`
       totalCount
       edges {
         node {
+          id
           name
           currency
           capital

@@ -8,5 +8,5 @@ export default class Router extends EmberRouter {
 
 Router.map(function () {
   this.route('country-list', { path: '/' });
-  this.route('country-detail', { path: '/country' });
+  this.route('country-detail', { path: '/country/:countryId' });
 });

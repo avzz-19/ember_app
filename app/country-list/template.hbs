@@ -2,6 +2,7 @@
 <table>
   <thead>
     <tr>
+      <th>Sl No.</th>
       <th>Name</th>
       <th>Currency</th>
       <th>Capital</th>
@@ -10,7 +11,8 @@
   <tbody>
     {{#each @model.countries as |country|}}
       <tr>
-        <td>{{country.name}}</td>
+        <td>{{country.id}}</td>
+        <td><LinkTo @route="country-detail" @model={{country.id}}>{{country.name}}</LinkTo></td>
         <td>{{country.currency}}</td>
         <td>{{country.capital}}</td>
       </tr>
@@ -20,10 +22,10 @@
 
 <div class="pagination">
   {{#if @model.currentPage}}
-    <button type="button" {{action "goToPage" (@model.currentPage)}}>Previous</button>
+    <button type="button" {{action "goToPage" (dec @model.currentPage)}}>Previous</button>
   {{/if}}
   <span>Page {{@model.currentPage}} of {{@model.totalPages}}</span>
-  {{#if (@model.currentPage @model.totalPages)}}
-    <button type="button" {{action "goToPage" (@model.currentPage)}}>Next</button>
+  {{#if (if-equals @model.currentPage @model.totalPages)}}
+    <button type="button" {{action "goToPage" (inc @model.currentPage)}}>Next</button>
   {{/if}}
 </div>

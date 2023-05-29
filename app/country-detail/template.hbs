@@ -1,29 +1,32 @@
-<h1>{{country.name}}</h1>
+<h1>{{model.country.name}}</h1>
 
-<h2>Currency Information</h2>
-<p>Currency: {{country.currency}}</p>
-<p>Currency Symbol: {{country.currencySymbol}}</p>
-<p>Phone Code: {{country.phoneCode}}</p>
+<h2>Country Information</h2>
+<p>Currency: {{model.country.currency}}</p>
+<p>Currency Symbol: {{model.country.currencySymbol}}</p>
+<p>Phone Code: {{model.country.phoneCode}}</p>
 
 <h2>States</h2>
-
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Code</th>
+      <th>State Code</th>
       <th>Latitude</th>
       <th>Longitude</th>
     </tr>
-    </thead>
-    <tbody>
-      {{#each states as |state|}}
-        <tr>
-          <td>{{state.name}}</td>
-          <td>{{state.code}}</td>
-          <td>{{state.latitude}}</td>
-          <td>{{state.longitude}}</td>
-        </tr>
-      {{/each}}
-    </tbody>
-  </table>
+  </thead>
+  <tbody>
+    {{#each model.states as |state|}}
+      <tr>
+        <td>{{state.name}}</td>
+        <td>{{state.code}}</td>
+        <td>{{state.latitude}}</td>
+        <td>{{state.longitude}}</td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+<div class="pagination">
+  {{!-- Implement pagination buttons --}}
+</div>

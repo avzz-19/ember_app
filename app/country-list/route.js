@@ -7,6 +7,7 @@ import { countriesQuery } from './queries';
 export default class CountryListRoute extends Route {
   @service('apollo') apollo;
   @queryManager() apolloQueryManager;
+  @service router;
 
   queryParams = {
     page: {
@@ -35,6 +36,7 @@ export default class CountryListRoute extends Route {
       query: countriesQuery,
       variables,
     });
+    console.log(result)
 
     return {
       countries: result.countries.edges.map((edge) => edge.node),
@@ -52,6 +54,6 @@ export default class CountryListRoute extends Route {
 
   @action
   goToPage(page) {
-    this.transitionTo({ queryParams: { page } });
+    this.router.transitionTo({ queryParams: { page } });
   }
 }
