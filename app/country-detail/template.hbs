@@ -1,9 +1,9 @@
-<h1>{{model.country.name}}</h1>
+<h1>{{@model.country.name}}</h1>
 
 <h2>Country Information</h2>
-<p>Currency: {{model.country.currency}}</p>
-<p>Currency Symbol: {{model.country.currencySymbol}}</p>
-<p>Phone Code: {{model.country.phoneCode}}</p>
+<p>Currency: {{@model.country.currency}}</p>
+<p>Currency Symbol: {{@model.country.currency_symbol}}</p>
+<p>Phone Code: {{@model.country.phone_code}}</p>
 
 <h2>States</h2>
 <table>
@@ -16,17 +16,23 @@
     </tr>
   </thead>
   <tbody>
-    {{#each model.states as |state|}}
+    {{#each @model.states.edges as |state|}}
       <tr>
-        <td>{{state.name}}</td>
-        <td>{{state.code}}</td>
-        <td>{{state.latitude}}</td>
-        <td>{{state.longitude}}</td>
+        <td>{{state.node.name}}</td>
+        <td>{{state.node.state_code}}</td>
+        <td>{{state.node.latitude}}</td>
+        <td>{{state.node.longitude}}</td>
       </tr>
     {{/each}}
   </tbody>
 </table>
 
 <div class="pagination">
-  {{!-- Implement pagination buttons --}}
+    {{#if @model.currentPage}}
+    <button type="button" {{action "goToPage" (dec @model.currentPage)}}>Previous</button>
+  {{/if}}
+  <span>Page {{@model.currentPage}} of {{@model.totalPages}}</span>
+  {{#if (if-equals @model.currentPage @model.totalPages)}}
+    <button type="button" {{action "goToPage" (inc @model.currentPage)}}>Next</button>
+  {{/if}}
 </div>

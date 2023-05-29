@@ -11,21 +11,31 @@ export default class CountryDetailRoute extends Route {
   async model(params) {
     const { countryId } = params;
     const id = parseInt(countryId, 10); 
+    const pageSize = 20;
+    const page = parseInt(params.page, 10) || 1;
+
+    const pagination = {
+      first: pageSize,
+      after: null,
+    };
+
+    if (page > 1) {
+      pagination.after = btoa(`arrayconnection:${(page - 1) * pageSize}`);
+    }
 
     const [countryResult, statesResult] = await Promise.all([
       this.apolloQueryManager.watchQuery({
         query: countryQuery,
-        variables: { id },
+        variables: { countryId: id, pagination },
       }),
       this.apolloQueryManager.watchQuery({
         query: statesQuery,
-        variables: { countryId: id },
+        variables: { countryId: id , pagination},
       }),
     ]);
-
     return {
-      country: countryResult.data.country,
-      states: statesResult.data.states,
+      country: countryResult.country,
+      states: statesResult.states,
     };
   }
 
