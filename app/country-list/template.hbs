@@ -21,11 +21,11 @@
 </table>
 
 <div class="pagination">
-  {{#if @model.currentPage}}
-    <button type="button" {{action "goToPage" (dec @model.currentPage)}}>Previous</button>
+  {{#if @model.hasPreviousPage}}
+    <button type="button" {{action "goToPage" (dec @model.currentPage) @model.after}}>Previous</button>
   {{/if}}
   <span>Page {{@model.currentPage}} of {{@model.totalPages}}</span>
-  {{#if (if-equals @model.currentPage @model.totalPages)}}
-    <button type="button" {{action "goToPage" (inc @model.currentPage)}}>Next</button>
+  {{#if @model.hasNextPage}}
+    <button type="button" {{action "goToPage" (inc @model.currentPage) @model.after}}>Next</button>
   {{/if}}
 </div>
