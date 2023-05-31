@@ -1,7 +1,7 @@
 # ember-app
 
 This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Ember App to explore geographic data from the GeographQL service.
 
 ## Prerequisites
 
