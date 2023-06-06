@@ -4,7 +4,7 @@ export function linkToHelper([routeName, model], options) {
   return {
     route: routeName,
     model,
-    options: options.hash
+    options: options.hash,
   };
 }
 

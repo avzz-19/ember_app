@@ -4,7 +4,9 @@ import { createHttpLink } from 'apollo-link-http';
 
 export default class MyApolloService extends ApolloService {
   clientOptions() {
-    const httpLink = createHttpLink({ uri: 'https://api.geographql.rudio.dev/graphql' });
+    const httpLink = createHttpLink({
+      uri: 'https://api.geographql.rudio.dev/graphql',
+    });
 
     const authLink = setContext((_, { headers }) => {
       // No authentication required for this API, so no modification needed

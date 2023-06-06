@@ -9,7 +9,12 @@ module.exports = function (defaults) {
 
   // Import and merge the custom helpers
   const customHelpers = new Funnel('app', {
-    files: ['helpers/if-equals.js', 'helpers/inc.js', 'helpers/dec.js','helpers/link-to.js'],
+    files: [
+      'helpers/if-equals.js',
+      'helpers/inc.js',
+      'helpers/dec.js',
+      'helpers/link-to.js',
+    ],
     destDir: 'helpers',
   });
   return MergeTrees([app.toTree(), customHelpers]);

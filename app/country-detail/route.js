@@ -10,7 +10,7 @@ export default class CountryDetailRoute extends Route {
 
   async model(params) {
     const { countryId } = params;
-    const id = parseInt(countryId, 10); 
+    const id = parseInt(countryId, 10);
     const pageSize = 20;
     const page = parseInt(params.page, 10) || 1;
 
@@ -30,7 +30,7 @@ export default class CountryDetailRoute extends Route {
       }),
       this.apolloQueryManager.watchQuery({
         query: statesQuery,
-        variables: { countryId: id , pagination},
+        variables: { countryId: id, pagination },
       }),
     ]);
     return {

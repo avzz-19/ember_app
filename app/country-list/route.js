@@ -8,7 +8,9 @@ export default class CountryListRoute extends Route {
   @service('apollo') apollo;
   @queryManager() apolloQueryManager;
   @service router;
-
+  beforeModel(/* transition */) {
+    this.router.transitionTo('country-list'); // Implicitly aborts the on-going transition.
+  }
   queryParams = {
     page: {
       refreshModel: true,
@@ -86,6 +88,8 @@ export default class CountryListRoute extends Route {
     };
 
     this.controller.setProperties(updatedModel);
-    this.router.transitionTo({ queryParams: { page, after: updatedModel.after } });
+    this.router.transitionTo({
+      queryParams: { page, after: updatedModel.after },
+    });
   }
 }

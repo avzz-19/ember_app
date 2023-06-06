@@ -41,7 +41,7 @@ module.exports = function (environment) {
     ENV.APP.autoboot = false;
     ENV.apollo = {
       apiURL: 'https://api.geographql.rudio.dev/graphql',
-      connectToDevTools: true
+      connectToDevTools: true,
     };
   }
 
